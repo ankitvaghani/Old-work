@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<body style="background: #dadada;">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<p>Image to use:</p>
+<img id="scream" src="http://images.productserve.com/preview/1302/218680281.jpg" alt="The Scream">
+<!--
+<p>Canvas:</p>
+<canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas> -->
+<p>Canvas</p>
+<!-- <canvas id="canvas"></canvas> -->
+
+<script>
+window.onload = function() {
+    // var c = document.getElementById("myCanvas");
+    // var ctx = c.getContext("2d");
+   // var img = document.getElementById("scream");
+    //ctx.drawImage(img, 0, 0);
+
+	
+
+
+    // img.src = "images/back.jpg";
+    // console.log(img);
+    // img.onload = function() {
+    //   ctx.drawImage(this, 0, 0 , this.width, this.height);
+    // };
+    // img.src = "images/back.jpg";
+//}
+
+	
+
+	// var canvas = document.getElementById('canvas');
+	// var ctx = canvas.getContext('2d');
+
+	// var image = new Image;   // using optional size for image
+	// image.onload = drawImageActualSize; // draw when image has loaded
+
+	// // load an image of intrinsic size 300x227 in CSS pixels
+	// image.src = 'images/back.jpg';
+
+	// function drawImageActualSize() {
+	//   // use the intrinsic size of image in CSS pixels for the canvas element
+	//   canvas.width = this.naturalWidth;
+	//   canvas.height = this.naturalHeight;
+
+	//   // will draw the image as 300x227 ignoring the custom size of 60x45
+	//   // given in the constructor
+	//   ctx.drawImage(this, 0, 0);
+
+	//   // To use the custom size we'll have to specify the scale parameters 
+	//   // using the element's width and height properties - lets draw one 
+	//   // on top in the corner:
+	//   //ctx.drawImage(this, 0, 0, this.width, this.height);
+	// }
+
+	cropCanvasImage('index.png');
+
+	function cropCanvasImage(imageSrc){
+		var myImage = new Image();
+		// myImage.crossOrigin = "Anonymous";
+		myImage.onload = function(){
+		    console.log('123');
+		    var imageData = removeImageBlanks(myImage); //Will return cropped image data
+		    window.open(imageData);
+		    
+		    console.log(imageData);
+		    
+		}
+		myImage.src = imageSrc;
+	}
+
+	//-----------------------------------------//
+	function removeImageBlanks(imageObject) {
+	    imgWidth = imageObject.width;
+	    imgHeight = imageObject.height;
+	    var canvas = document.createElement('canvas');
+	    canvas.setAttribute("width", imgWidth);
+	    canvas.setAttribute("height", imgHeight);
+	    var context = canvas.getContext('2d');
+	    context.drawImage(imageObject, 0, 0);
+
+	    var imageData = context.getImageData(0, 0, imgWidth, imgHeight),
+	        data = imageData.data,
+	        getRBG = function(x, y) {
+	            var offset = imgWidth * y + x;
+	            return {
+	                red:     data[offset * 4],
+	                green:   data[offset * 4 + 1],
+	                blue:    data[offset * 4 + 2],
+	                opacity: data[offset * 4 + 3]
+	            };
+	        },
+	        isWhite = function (rgb) {
+	            // many images contain noise, as the white is not a pure #fff white
+	            return rgb.red == 0 && rgb.green == 0 && rgb.blue == 0;
+	        },
+	                scanY = function (fromTop) {
+	        var offset = fromTop ? 1 : -1;
+
+	        // loop through each row
+	        for(var y = fromTop ? 0 : imgHeight - 1; fromTop ? (y < imgHeight) : (y > -1); y += offset) {
+
+	            // loop through each column
+	            for(var x = 0; x < imgWidth; x++) {
+	                var rgb = getRBG(x, y);
+	                if (!isWhite(rgb)) {
+	                    if (fromTop) {
+	                        return y;
+	                    } else {
+	                        return Math.min(y + 1, imgHeight - 1);
+	                    }
+	                }
+	            }
+	        }
+	        return null; // all image is white
+	    },
+	    scanX = function (fromLeft) {
+	        var offset = fromLeft? 1 : -1;
+
+	        // loop through each column
+	        for(var x = fromLeft ? 0 : imgWidth - 1; fromLeft ? (x < imgWidth) : (x > -1); x += offset) {
+
+	            // loop through each row
+	            for(var y = 0; y < imgHeight; y++) {
+	                var rgb = getRBG(x, y);
+	                if (!isWhite(rgb)) {
+	                    if (fromLeft) {
+	                        return x;
+	                    } else {
+	                        return Math.min(x + 1, imgWidth - 1);
+	                    }
+	                }      
+	            }
+	        }
+	        return null; // all image is white
+	    };
+
+	    var cropTop = scanY(true),
+	        cropBottom = scanY(false),
+	        cropLeft = scanX(true),
+	        cropRight = scanX(false),
+	        cropWidth = cropRight - cropLeft,
+	        cropHeight = cropBottom - cropTop;
+
+	    canvas.setAttribute("width", cropWidth);
+	    canvas.setAttribute("height", cropHeight);
+	    // finally crop the guy
+	    canvas.getContext("2d").drawImage(imageObject,
+	        cropLeft, cropTop, cropWidth, cropHeight,
+	        0, 0, cropWidth, cropHeight);
+
+	    return canvas.toDataURL();
+	}
+};
+
+//
+//            var canvas = document.getElementById('newcanvas');
+//            var ctx = canvas.getContext('2d');
+//
+//            var image = new Image;   // using optional size for image
+//            image.onload = drawImageActualSize; // draw when image has loaded
+//
+//            // load an image of intrinsic size 300x227 in CSS pixels
+//            image.src = window.frontImageUrl;
+//
+//            function drawImageActualSize() {
+//              // use the intrinsic size of image in CSS pixels for the canvas element
+//              canvas.width = this.naturalWidth;
+//              canvas.height = this.naturalHeight;
+//
+//              // will draw the image as 300x227 ignoring the custom size of 60x45
+//              // given in the constructor
+//              ctx.drawImage(this, 0, 0);
+//
+//              // To use the custom size we'll have to specify the scale parameters
+//              // using the element's width and height properties - lets draw one
+//              // on top in the corner:
+//              //ctx.drawImage(this, 0, 0, this.width, this.height);
+//            }
+
+
+
+//            var canvas = document.createElement('canvas');
+//
+//            canvas.id = "newCanvas";
+//            canvas.width = 600;
+//            canvas.height = 300;
+//            canvas.style.zIndex = 8;
+//            canvas.style.position = "absolute";
+//            canvas.style.border = "1px solid";
+
+            //var canvas = document.getElementsByClassName('lower-canvas')[0];
+
+           // var newcanvas = document.getElementById("newcanvas");
+           // var destinationCtx;
+
+
+            //get the destination context
+           // destinationCtx = newcanvas.getContext('2d');
+
+            //copy the data
+           // destinationCtx.putImageData(window.frontImageUrl, 0, 0);
+
+            //var img = new Image;
+
+           // var newimg = document.getElementById("newimg");
+
+           // newimg.src = window.frontImageUrl;
+
+           // img.onload = function(){
+              //destinationCtx.drawImage(newimg, 0, 0 , newimg.height , newimg.width); // Or at whatever offset you like
+           // };
+
+            //img.src = window.frontImageUrl;
+
+//              var canvas = document.getElementsByClassName('lower-canvas')[0];
+//              var context = canvas.getContext('2d');
+//
+//              // do some drawing
+//              //context.clear();
+//
+//              // do some more drawing
+//              context.setTransform(-1, 0, 0, 1, 200, 200);
+//              // do some drawing with the new transform
+//              //context.clear(true);
+//              // draw more, still using the preserved transform
+//
+//              context.clearRect(0, 0, canvas.width, canvas.height);
+//
+//              // Restore the transform
+//               // context.restore();
+
+
+</script>
+
+
+</body>
+</html>

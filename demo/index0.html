@@ -1,0 +1,239 @@
+<html>
+    <head>
+        <title>Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />  
+   
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+     
+      <script src="bootstrap/js/bootstrap.min.js" type="text/javascript" rel="script" ></script>
+    <script src="angular/angular.min.js" type="text/javascript" rel="script" ></script>
+    <script src="jquery/jquery.min.js" type="text/javascript" rel="script" ></script>
+    <script src="jquery/jquery.ui.min.js" type="text/javascript" rel="script" ></script>
+  
+
+<link rel="stylesheet" href="css/bootstrap-tour.css" type="text/css" />
+  <script type="text/javascript" src="js/bootstrap-tour.js"></script>
+<link rel="stylesheet" href="font-awesome-5.0.8/css/fontawesome.min.css" type="text/css" />
+
+
+  <!-- Toolbar css -->
+   <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
+
+<!-- Toolbox js-->
+ <!-- <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script> -->
+    <script type="text/javascript" src="js/jqxcore.js"></script>
+    <script type="text/javascript" src="js/jqxbuttons.js"></script>
+    <script type="text/javascript" src="js/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="js/jqxlistbox.js"></script>
+    <script type="text/javascript" src="js/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="js/jqxcombobox.js"></script>
+    <script type="text/javascript" src="js/jqxinput.js"></script>
+    <script type="text/javascript" src="js/jqxtoolbar.js"></script>
+    <script type="text/javascript" src="js/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="js/demos.js"></script>
+
+ <script>
+ 
+     $(document).ready(function () {
+
+// var floatvalue = 128.242;
+// var intvalue = Math.round( floatvalue );
+// alert(intvalue);
+        $( ".draggable" ).draggable({ 
+                    containment: "#img-div" 
+                });
+               // $( "#draggable" ).resizable(); 
+                
+           
+            var x = $(".draggable").position();
+           // alert("Top position: " + x.top + " Left position: " + x.left);
+             $(".toolbar").hide();
+             $(".draggable").click(function(){
+                $(this).resizable();
+                $(".toolbar").show();
+               // $("#temp").focus();
+            }); 
+        
+
+
+
+
+            $("#toolbar").jqxToolBar({
+                width: getWidth('toolbar'), height: 35, tools: 'toggleButton toggleButton toggleButton | toggleButton | dropdownlist combobox | input | custom',
+                initTools: function (type, index, tool, menuToolIninitialization) {
+                    if (type == "toggleButton") {
+                        var icon = $("<div class='jqx-editor-toolbar-icon jqx-editor-toolbar-icon-" + theme + " buttonIcon'></div>");
+                    }
+                    switch (index) {
+                        case 0:
+                            icon.addClass("jqx-editor-toolbar-icon-bold jqx-editor-toolbar-icon-bold-" + theme);
+                            icon.attr("title", "Bold");
+                            tool.append(icon);
+                            break;
+                        case 1:
+                            icon.addClass("jqx-editor-toolbar-icon-italic jqx-editor-toolbar-icon-italic-" + theme);
+                            icon.attr("title", "Italic");
+                            tool.append(icon);
+                            break;
+                        case 2:
+                            icon.addClass("jqx-editor-toolbar-icon-underline jqx-editor-toolbar-icon-underline-" + theme);
+                            icon.attr("title", "Underline");
+                            tool.append(icon);
+                            break;
+                        case 3:
+                            tool.jqxToggleButton({ width: 80, toggled: true });
+                            tool.text("Enabled");
+                            tool.on("click", function () {
+                                var toggled = tool.jqxToggleButton("toggled");
+                                if (toggled) {
+                                    tool.text("Enabled");
+                                } else {
+                                    tool.text("Disabled");
+                                }
+                            });
+                            break;
+                        case 4:
+                            tool.jqxDropDownList({ width: 130, source: [{ html: "<span style='font-family: Courier New;'>Courier New</span>" }, { html: "<span style='font-family: Times New Roman;'>Times New Roman</span>" }, { html: "<span style='font-family: Verdana;'>Verdana</span>" }], selectedIndex: 1 });
+                            break;
+                        case 5:
+                            tool.jqxComboBox({ width: 50, source: [8, 9, 10, 11, 12, 14, 16, 18, 20], selectedIndex: 3 });
+                            break;
+                        
+                        case 6:
+                            tool.jqxInput({ width: 200, placeHolder: "Type here to search..." });
+                            break;
+                        case 7:
+                            var button = $("<div>" + "<img src='images/administrator.png' title='Custom tool' />" + "</div>");
+                            tool.append(button);
+                            button.jqxButton({ height: 15 });
+                            break;
+                    }
+                }
+            });
+
+
+             
+        });
+    
+
+
+
+
+  </script>
+        <style type="text/css">
+            .img-div{
+                
+                margin: 10px 30px 0px 30px;
+                background-image: url('images/front.jpg');
+                background-repeat: no-repeat;                
+                height: 300px;
+                background-size: 100% 100%;
+
+
+            }
+          .draggable:focus, .draggable:active{
+                cursor: default;                
+                border-style: dashed;
+                
+            }
+            .draggable:focus, .draggable:active{
+                cursor: auto;
+            }
+            .draggable{
+                background: transparent;
+                border-style: none;
+            }
+          .buttonIcon
+            {
+                margin: -5px 0 0 -3px;
+                width: 16px;
+                height: 17px;
+            }
+        </style>
+       
+    </head>
+    <body>
+            
+       <input type="text" name="temp" id="temp" style="width: 0;overflow: hidden;" />
+        <div id="img-div" class="img-div">
+            
+                <span id="draggable" contenteditable="true" class="draggable" style="float: left;"  class="ui-widget-content">
+                   Default Text This is simple text
+                   <!-- <i id="close" class="glyphicon glyphicon-remove-sign"></i> -->
+                </span>                  
+            
+        </div>
+           
+    <center>
+        <div id="toolbar" class="toolbar">
+        </div>
+        
+
+<div id="toolbar" style="width: 800px; height: 35px;" class=" jqx-widget jqx-widget-light jqx-fill-state-normal jqx-fill-state-normal-light jqx-rc-all jqx-rc-all-light jqx-toolbar jqx-toolbar-light">
+   <div class="jqx-menu-minimized-button jqx-menu-minimized-button-light jqx-toolbar-minimized-button jqx-toolbar-minimized-button-light"></div>
+   <button id="jqxWidget069a6230a000" style="height: 23px;" role="button" class="jqx-button jqx-button-light jqx-widget jqx-widget-light jqx-rc-l jqx-rc-l-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-fill-state-pressed jqx-fill-state-pressed-light" aria-disabled="false" aria-checked="false">
+      <div class="jqx-editor-toolbar-icon jqx-editor-toolbar-icon-light buttonIcon jqx-editor-toolbar-icon-bold jqx-editor-toolbar-icon-bold-light" title="Bold"></div>
+   </button>
+   <button id="jqxWidgetb0d92d8e8eb0" style="height: 23px; border-left-width: 0px;" role="button" class="jqx-rc-all jqx-rc-all-light jqx-button jqx-button-light jqx-widget jqx-widget-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-inner-button jqx-toolbar-tool-inner-button-light jqx-fill-state-normal jqx-fill-state-normal-light" aria-disabled="false" aria-checked="false">
+      <div class="jqx-editor-toolbar-icon jqx-editor-toolbar-icon-light buttonIcon jqx-editor-toolbar-icon-italic jqx-editor-toolbar-icon-italic-light" title="Italic"></div>
+   </button>
+   <button id="jqxWidget0894d6ddb912" style="height: 23px; border-left-width: 0px;" role="button" class="jqx-button jqx-button-light jqx-widget jqx-widget-light jqx-rc-r jqx-rc-r-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-separator-ltr jqx-toolbar-tool-separator-ltr-light jqx-fill-state-normal jqx-fill-state-normal-light" aria-disabled="false" aria-checked="false">
+      <div class="jqx-editor-toolbar-icon jqx-editor-toolbar-icon-light buttonIcon jqx-editor-toolbar-icon-underline jqx-editor-toolbar-icon-underline-light" title="Underline"></div>
+   </button>
+   <button id="jqxWidgetcac9d2ff54a4" style="height: 23px; width: 80px;" role="button" class="jqx-rc-all jqx-rc-all-light jqx-button jqx-button-light jqx-widget jqx-widget-light jqx-fill-state-pressed jqx-fill-state-pressed-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-separator-ltr jqx-toolbar-tool-separator-ltr-light" aria-disabled="false" aria-checked="false">Enabled</button>
+   <div id="jqxWidgetcf5be618bf8a" role="combobox" aria-autocomplete="both" aria-readonly="false" tabindex="0" class="jqx-widget jqx-widget-light jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-light jqx-rc-all jqx-rc-all-light jqx-fill-state-normal jqx-fill-state-normal-light jqx-default jqx-default-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-no-separator-ltr jqx-toolbar-tool-no-separator-ltr-light" aria-owns="listBoxjqxWidgetcf5be618bf8a" aria-haspopup="true" style="width: 130px; height: 21px;" aria-expanded="false">
+      <div style="background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;">
+         <div id="dropdownlistWrapperjqxWidgetcf5be618bf8a" style="overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;">
+            <div id="dropdownlistContentjqxWidgetcf5be618bf8a" unselectable="on" style="outline: medium none currentcolor; background-color: transparent; border: medium none; float: left; position: relative; margin-top: 2px; margin-bottom: 2px; width: 105px; height: 21px; left: 0px; top: 0px;" class="jqx-dropdownlist-content jqx-dropdownlist-content-light jqx-disableselect jqx-disableselect-light"><span style="font-family: Times New Roman;">Times New Roman</span></div>
+            <div id="dropdownlistArrowjqxWidgetcf5be618bf8a" unselectable="on" style="background-color: transparent; border: medium none; float: right; position: relative; width: 19px; height: 21px;">
+               <div unselectable="on" class="jqx-icon-arrow-down jqx-icon-arrow-down-light jqx-icon jqx-icon-light"></div>
+            </div>
+         </div>
+      </div>
+      <input value="" type="hidden">
+   </div>
+   <div id="jqxWidget3297fa89a285" role="combobox" aria-autocomplete="both" aria-disabled="false" aria-owns="listBoxjqxWidget0443d8cbf6fb" aria-haspopup="true" aria-multiline="false" class="jqx-combobox-state-normal jqx-combobox-state-normal-light jqx-combobox jqx-combobox-light jqx-rc-all jqx-rc-all-light jqx-widget jqx-widget-light jqx-widget-content jqx-widget-content-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-separator-ltr jqx-toolbar-tool-separator-ltr-light" style="width: 50px; height: 21px;" aria-readonly="false" aria-activedescendant="listitem3innerListBoxjqxWidget0443d8cbf6fb">
+      <div style="background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;">
+         <div id="dropdownlistWrapperjqxWidget3297fa89a285" style="padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;">
+            <div id="dropdownlistContentjqxWidget3297fa89a285" style="padding: 0px; margin: 0px; border-top: medium none; border-bottom: medium none; float: left; position: absolute; width: 31px; height: 21px; left: 0px; top: 0px;" class="jqx-combobox-content jqx-combobox-content-light jqx-widget-content jqx-widget-content-light"><input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0px; padding: 0px 3px; border: 0px none; width: 100%; height: 21px;" class="jqx-combobox-input jqx-combobox-input-light jqx-widget-content jqx-widget-content-light jqx-rc-all jqx-rc-all-light" value="11" placeholder="" type="textarea"></div>
+            <div id="dropdownlistArrowjqxWidget3297fa89a285" role="button" style="padding: 0px; margin: 0px; border-width: 0px 0px 0px 1px; float: right; position: absolute; width: 19px; height: 21px; left: 32px;" class="jqx-combobox-arrow-normal jqx-combobox-arrow-normal-light jqx-fill-state-normal jqx-fill-state-normal-light jqx-rc-r jqx-rc-r-light">
+               <div class="jqx-icon-arrow-down jqx-icon-arrow-down-light jqx-icon jqx-icon-light"></div>
+            </div>
+         </div>
+      </div>
+      <input value="11" type="hidden">
+   </div>
+   <input id="jqxWidget06633f3280ee" role="textbox" aria-autocomplete="both" aria-disabled="false" aria-readonly="false" aria-multiline="false" class="jqx-widget-content jqx-widget-content-light jqx-input-widget jqx-input-widget-light jqx-input jqx-input-light jqx-widget jqx-widget-light jqx-rc-all jqx-rc-all-light jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-separator-ltr jqx-toolbar-tool-separator-ltr-light" style="height: 21px; width: 200px;" placeholder="Type here to search..." type="text">
+   <div class=" jqx-toolbar-tool jqx-toolbar-tool-light jqx-toolbar-tool-no-separator-ltr jqx-toolbar-tool-no-separator-ltr-light">
+      <div id="jqxWidgetdbf336828a68" style="height: 15px;" role="button" class="jqx-rc-all jqx-rc-all-light jqx-button jqx-button-light jqx-widget jqx-widget-light jqx-fill-state-normal jqx-fill-state-normal-light" aria-disabled="false"><img src="../../images/administrator.png" title="Custom tool"></div>
+   </div>
+</div>
+
+
+    </center>
+    </div>
+    <script type="text/javascript">
+      // Instance the tour
+      var tour = new Tour({
+        steps: [
+        {
+          element: "#img-div",
+          title: "Title of my step",
+          content: "Content of my step"
+        },
+        {
+          element: "#draggable",
+          title: "Title of my step",
+          content: "Content of my step"
+        }
+      ]});
+
+      // Initialize the tour
+      tour.init();
+
+      // Start the tour
+      tour.start();
+    </script>
+    </body>
+</html>

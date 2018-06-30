@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Draggable, Movable and Resizable HTML DOM elements using jQuery</title>
+	<meta name="description" content="This article is about creating Draggable, Movable and Resizable DIV and other HTML DOM elements using jQuery. Also a brief explanation about DOM." />
+	<meta name="keywords" content="Draggable,Movable,Resizable DIV,jQuery,Document Object Model,jQuery .draggable(),jQuery .resizable()" />
+	<meta name="author" content="Arun Banik" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<link rel="shortcut icon" href="http://www.encodedna.com/encodedna.ico" type="image/x-icon" />
+	<link rel="canonical" href="http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm" />
+	<!--[if lt IE 9]>
+	    <link href="http://www.encodedna.com/css/style.css" type="text/css" rel="stylesheet" />
+    <![endif]-->	
+	<link media="only screen and (min-width: 900px)" href="http://www.encodedna.com/css/style.css" type="text/css" rel="stylesheet" />
+	<link media="only screen and (max-width: 900px), only screen and (max-device-width: 900px)" href="http://www.encodedna.com/css/smalldevice.css" type="text/css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <noscript><div style="width:100%;margin:0 auto;text-align:center;background-color:Yellow;">Please enable JavaScript to view this page properly.</div></noscript>
+	<div id="header-wrapper">
+	    <div id="header">
+	        <div style="float:left"><a href="http://www.encodedna.com/" title="Encodedna"><img src="http://www.encodedna.com/images/encodedna.png" width="300px" height="49px" alt="www.encodedna.com" /></a><script async src="http://www.encodedna.com/library/encodedna_script.js" onload="sponsad();"></script></div>
+	    </div>
+	</div>
+	<div id="contentnav"><script>$(function () {$("#headnav").load("http://www.encodedna.com/header.htm");});</script><div id="headnav"></div></div>
+	<div id="content">
+	    <div class="header">
+	        <h1>Draggable, Movable and Resizable HTML DOM elements using jQuery</h1>
+            <div class="tag"><a class="catonpage" href="http://www.encodedna.com/category/jquery" title="jquery">jquery</a></div>
+            <div class="tag" style="float:right;">
+                <a href="http://twitter.com/home?status=Draggable, Movable and Resizable HTML DOM elements using jQuery http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm @theEncodeDna" target="_blank" title="Tweet this article" style="text-decoration:none;">
+                    <img src="http://www.encodedna.com/images/theme/twitter.png" width="32px" height="32px" alt="Tweet this article" title="Tweet this article" />
+                </a>
+                <a href="http://www.facebook.com/sharer.php?u=http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm" target="_blank" title="Share this on Facebook" style="text-decoration:none;">
+                    <img src="http://www.encodedna.com/images/theme/fb.png" width="32px" height="32px" alt="Facebook" title="Share this on Facebook" />
+                </a>
+                <a href="https://plus.google.com/share?url=http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm" target="_blank" title="Share this on Google+">
+                    <img src="http://www.encodedna.com/images/theme/gplus.png" width="32px" height="32px" alt="Google+" title="Share this on Google+" />
+                </a>
+            </div>
+	    </div>
+	    <div id="nav-recentpost">
+	        <div style="text-align:center;padding:20px 0;background-color:#F1F1F2;">
+                <form action="http://www.google.com" id="cse-search-box">
+                  <div>
+                    <input type="hidden" name="cx" value="partner-pub-5222830587664038:4833961392" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <input type="text" name="q" size="25" />
+                    <input type="submit" name="sa" value="Search" />
+                  </div>
+                </form>
+                <script async type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+	        </div>
+            <div style="text-align:center;padding:20px 0;height:300px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- ed-right-large-rect --><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px"data-ad-client="ca-pub-5222830587664038"data-ad-slot="6795298995"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+            <div style="margin:10px 0 40px 0;width:auto;text-align:center;padding:20px 0;background-color:#F1F1F2;">
+                <div style="font:inherit;font-size:120%;font-style:italic;color:#17293C!important;padding:5px;">Want to keep up to date with all my lastest articles and tip?</div>
+                <a style="background:#FF6600;color:#FFF;display:inline-block;padding:6px 12px;margin-bottom:0;font:inherit;font-size:18px;font-weight:normal!important;font-style:italic;line-height:1.5;text-align:center;vertical-align:middle;cursor:pointer;border:1px solid transparent;border-radius:4px;white-space:nowrap;text-decoration:none;"href="http://www.encodedna.com/subscribe/to-my-articles-via-email.htm" target="_blank">Click Here to Subscribe</a>
+            </div>
+	        <div><iframe src="http://www.encodedna.com/frametools/recentposts.aspx" scrolling="no"frameborder="0"class="frame-rp"></iframe></div>
+            <div style="background-color:#F1F1F2;padding:10px 0 7px 0;"><div style="float:left;padding-left:20px;"><div class="fb-like" data-href="http://www.encodedna.com/" data-send="true" data-layout="button_count" data-width="300" data-show-faces="true"></div></div><div style="float:left;padding:4px 0 0 10px;"><div class="g-plusone" data-size="medium" data-annotation="none"></div></div></div>
+	        <div style="padding:20px 0;"><iframe src="http://www.encodedna.com/frametools/popular.htm" scrolling="no" style="border:none;width:98%;"frameborder="0"height="680px"></iframe></div>
+	    </div>
+	    <div class="post">
+            <span class="Quote">In one of my previous articles, I have explained with an example on <a href="http://www.encodedna.com/2013/07/dynamically-add-remove-textbox-control-using-jquery.htm" class="quotelink">How to Create HTML element dynamically using jQuery</a>. It is one of the most popular articles in this blog. With its popularity came many questions and one specifically on how to create a Draggable, Movable and Resizable HTML element, which would serve as container (to all other elements). I am dedicating this article with a solution on creating an HTML DOM element that you can re-size, drag or move anywhere on your web page, using jQuery.</span>
+            <div class="top_ad" id="top_ad" style="clear:both;float:left;width:100%;margin:10px 0;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- responsive --><ins class="adsbygoogle"style="display:block"data-ad-client="ca-pub-5222830587664038"data-ad-slot="9810464595"data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+            <p>The jQuery functions that I am going to use here are jQuery <span style="font-style:italic;color:#000;">“draggable()”</span> and <span style="font-style:italic;color:#000;">“resizable()”</span> respectively.</p>
+            <p>The DIV serves as a container to other elements and we can shift or relocate its position on a web page, by simply <span style="font-style:italic;color:#000;">dragging</span> or <span style="font-style:italic;color:#000;">moving</span> it on the page. We can <span style="font-style:italic;color:#000;">resize</span> the DIV depending upon the number of elements that occupy space inside it.</p>
+            <p style="padding:20px 0"><span style="font-style:italic;color:#000;">See this</span> <a href="http://www.encodedna.com/2013/08/draggable-and-resizeable-div-demo.htm" class="livedemo">Demo</a></p>
+            <h2>DOM (Document Object Model)</h2>
+            <p>The <span style="font-style:italic;color:#000;">Document Object Model</span> or popularly known as <span style="font-style:italic;color:#000;">DOM</span> is an API for HTML documents. It defines how the elements can be manipulated and structured.</p>
+            <h3>A <span style="font-style:italic;color:#000;">“DOM”</span> structure</h3>
+<div class="code"><pre class="pre">
+&lthtml>
+    &lthead>
+        &ltbody>
+            &ltdiv>...&lt/div>
+        &lt/body>
+    &lt/head>
+&lt/html></pre></div>
+            <p>Read more about <a href="http://en.wikipedia.org/wiki/Document_Object_Model" class="contact">DOM</a></p>
+            <p>It’s a very simple script. However, it will provide the necessary platform for programmers who wish to design a web page dynamically.</p>
+            <p>The DOM elements that I have mentioned above, are commonly used elements. The primary purpose of these elements is to serve as a container. Therefore, I have added two “DIV” elements in the script to work with.</p>
+            <p><span class="related">Also Read:</span> <a href="http://www.encodedna.com/2013/07/dynamically-add-remove-textbox-control-using-jquery.htm" class="contact">Dynamically Add and Remove HTML Elements using jQuery</a></p>
+            <p>The first element is simply <span style="font-style:italic;color:#000;">draggable</span>, that is, you can drag the element anywhere on the web page. However, the second is <span style="font-style:italic;color:#000;">multi</span> functional, that is, you <span style="font-style:italic;color:#000;">drag</span> and <span style="font-style:italic;color:#000;">resize</span> the element.</p>
+            <div>
+                <div style="float:left;margin:10px 15px 20px 0;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- ed-right-large-rect --><ins class="adsbygoogle"style="display:inline-block;width:336px;height:280px"data-ad-client="ca-pub-5222830587664038"data-ad-slot="6795298995"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+                <p>Many online banks restrict their users to click the <span style="font-style:italic;color:#000;">refresh</span> or <span style="font-style:italic;color:#000;">back</span> button, as it might hinder or stop a transaction in process. Doing so, the bank or the client might lose valuable data in the process.</p>
+            </div>
+            <p>I'll also create dynamic DIV elements, which are <span style="font-style:italic;color:#000;">draggable</span> too. These elements will be attached to the <span style="font-style:italic;color:#000;">first</span> DIV element using jQuery <span style="font-style:italic;color:#000;">.appendTo()</span> method. The <span style="font-style:italic;color:#000;">newly</span> created DIV can be dragged anywhere on web page, but when the <span style="font-style:italic;color:#000;">first</span> element is dragged, it will move all newly created <span style="font-style:italic;color:#000;">DIVs</span> along with it.</p>
+            <div class="frmname">The Markup</div>
+<div class="code"><pre class="pre">
+&lthtml>
+&lthead>
+    &lttitle>Draggable, Moveable and Resizable DIV using jQuery&lt/title>
+    
+    &ltlink href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    &ltscript src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">&lt/script>
+    &ltscript src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js">&lt/script>
+    
+    &ltstyle>
+        #divContainer, #divResize { 
+            border:dashed 1px #CCC; 
+            width:120px; 
+            height:120px; 
+            padding:5px; 
+            margin:5px; 
+            font:13px Arial; 
+            cursor:<span style="color:#000;">move</span>; 
+            float:left 
+        } 
+    &lt/style>
+&lt/head>
+&ltbody>
+    &ltdiv>
+        &ltdiv id="divContainer"> 
+            I am Draggable 
+        &lt/div>
+
+        &ltinput type="button" style="float:left" id="btClickMe" value="Create more draggable DIV's" />
+
+        &ltdiv id="divResize">
+            I am Draggable and Resizable 
+        &lt/div>
+    &lt/div>
+&lt/body></pre></div>
+            <div class="frmname">The Script</div>
+<div class="code"><pre class="pre">
+&ltscript>
+    var element_pos = 0;    <span class="comments">// POSITION OF THE NEWLY CREATED ELEMENTS.</span>
+    var iCnt = 0;
+    $(document).ready(function() {
+
+        $(function() { $('#divContainer').<span style="color:#000;">draggable()</span>; });
+        $(function() { $("#divResize").<span style="color:#000;">draggable()</span>.<span style="color:#000;">resizable()</span>; });
+
+        <span class="comments">// CREATE MORE DIV, WITH 'ABSOLUTE' POSITIONING.</span>
+        $('#btClickMe').click(function() {
+
+            var dynamic_div = $(document.<span style="color:#000;">createElement</span>('div')).<span style="color:#000;">css</span>({
+                border: '1px dashed', position: 'absolute', left: element_pos, 
+                top: $('#divContainer').height() + 20,
+                width: '120', height: '120', padding: '3', margin: '0'
+            });
+
+            element_pos = element_pos + $('#divContainer').width() + 20;
+
+            $(dynamic_div).<span style="color:#000;">append</span>('You can drag me too');
+            
+            <span class="comments">// APPEND THE NEWLY CREATED DIV TO "divContainer".</span>
+            $(dynamic_div).<span style="color:#000;">appendTo</span>('#divContainer').<span style="color:#000;">draggable</span>();
+
+            iCnt = iCnt + 1;
+        });
+    });
+&lt/script>
+&lt/html></pre></div>
+            <p><span style="font-style:italic;color:#000;">See this</span> <a href="http://www.encodedna.com/2013/08/draggable-and-resizeable-div-demo.htm" class="livedemo">Demo</a></p>
+            <div class="recommend" style="margin:10px 0;">
+                <div style="text-align:center;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- responsive --><ins class="adsbygoogle"style="display:block"data-ad-client="ca-pub-5222830587664038"data-ad-slot="9810464595"data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+            </div>
+            <p>Thanks for reading.</p>
+            <p><span style="float:left;width:48%;"><a href="http://www.encodedna.com/2013/08/jquery-autocomplete-dropdown-list-on-focus.htm" title="Previous - Display AutoComplete Drop down List on Focus using jQuery" class="quotelink"><span style="font-weight:bold;">Previous</span> - Display AutoComplete Drop down List on Focus using Query</a></span><span style="float:right;width:48%;"><a href="http://www.encodedna.com/2013/09/multiple-fileupload-using-jquery-aspdotnet.htm" title="Multiple File Upload Using jQuery Multifile Plugin with Asp.Net FileUpload Control" class="quotelink"><span style="font-weight:bold;">Next</span> - Multiple File Upload Using jQuery Multifile Plugin with Asp.Net FileUpload Control</a></span></p><br /><br />
+            <div style="text-align:center;font:inherit;font-size:120%;font-style:italic;color:#17293C!important;padding:10px;margin:70px 0 30px 0;border:dashed 2px #CCC;overflow:hidden;">
+                <div>Like this Article? Subscribe now, and get all the latest articles and tips, right in your inbox.</div>
+                <div style="float:left;width:auto;">
+                    <h3 style="color:#222;border:none;padding-right:30px;">Enter your email id</h3>
+                </div>
+                <div style="float:left;width:auto;padding:18px 0;margin:0;">
+                    <form style="border:none;text-align:left;" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=Encodednadotcom/Feed', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+                    <input type="text" style="width:auto;height:20px;margin-right:5px;padding:1px 3px;border:1px solid #333;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;color:#000;" name="email"/><input type="hidden" value="Encodednadotcom/Feed" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" class="btcontinue" value="Sign Up!" /><span style="font-size:80%;color:#0086DC;padding-left:10px;">Delivered by <a href="https://feedburner.google.com" style="color:#000;" target="_blank">FeedBurner</a></span></form>
+                </div>
+            </div>
+            <div style="float:right;padding:5px 0 0 20px;"><label style="font-size:110%;font-style:italic; color:#0033CC;">Share this article</label></div>
+            <div style="float:right;padding-bottom:20px;">
+                <a href="http://twitter.com/home?status=Draggable, Movable and Resizable HTML DOM elements using jQuery http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm @theEncodeDna" target="_blank" title="Tweet this article" style="text-decoration:none;">
+                    <img src="http://www.encodedna.com/images/theme/twitter.png" width="32px" height="32px" alt="Tweet this article" title="Tweet this article" />
+                </a>
+                <a href="http://www.facebook.com/sharer.php?u=http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm" target="_blank" title="Share this on Facebook" style="text-decoration:none;">
+                    <img src="http://www.encodedna.com/images/theme/fb.png" width="32px" height="32px" alt="Facebook" title="Share this on Facebook" />
+                </a>
+                <a href="https://plus.google.com/share?url=http://www.encodedna.com/2013/08/draggable-resizeable-html-dom-elements-using-jquery.htm" target="_blank" title="Share this on Google+">
+                    <img src="http://www.encodedna.com/images/theme/gplus.png" width="32px" height="32px" alt="Google+" title="Share this on Google+" />
+                </a>
+            </div>
+<p style="clear:both;"><span class="related">Related Posts:</span></p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="autorelaxed"
+        data-ad-client="ca-pub-5222830587664038"
+        data-ad-slot="7630317796"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!--<div style="border:solid 1px #CCC;overflow:hidden;clear:both;width:100%;"><iframe id="ifra" onload="joadFrame()" src="http://www.encodedna.com/frametools/toplist.aspx?tag=&kw=method jquery&exc=53&inc=0" scrolling="no"style="border:none"width="98%"frameborder="0"height="0"></iframe></div>-->
+<div class="recommend"><!--comments--></div>
+<p><a href="https://plus.google.com/112382043867780745657/posts" target="_blank" class="contact">Join our Google Plus Community and be a part of a discussion!</a></p>
+        </div>
+        <div id="nav-right">
+            <div id="tpik">
+                <script async src="http://www.encodedna.com/library/encodedna_script.js" onload="fl();"></script>
+                <div id="flDiv" style="text-align:center;margin:0;padding:0;">
+                    <div id="nav-right-sky" style="height:600px;margin:0 auto;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- LargeSky --><ins class="adsbygoogle"style="display:inline-block;width:300px;height:600px"data-ad-client="ca-pub-5222830587664038"data-ad-slot="4965879797"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+                </div>
+            </div>
+	    </div>
+	</div>
+<div id="site_footer"><div class="container"><script type="text/javascript">$(function () { $("#footer").load("http://www.encodedna.com/footer.htm"); });</script><div id="footer"></div></div></div>
+<div id="fb-root"></div>
+<script>    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));</script>	
+</body>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37088350-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();    
+</script>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+</html>

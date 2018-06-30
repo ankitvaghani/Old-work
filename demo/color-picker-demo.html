@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>demo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+     <script src="bootstrap/js/bootstrap.min.js" type="text/javascript" rel="script"></script>
+    
+   
+    <link rel="stylesheet" href="font-awesome-5.0.8/css/fontawesome-all.min.css" type="text/css" />
+
+
+  <link rel="stylesheet" href="colorpicker/css/colorpicker.css" type="text/css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="colorpicker/css/layout.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="colorpicker/js/jquery.js"></script> -->
+  <script type="text/javascript" src="colorpicker/js/colorpicker.js"></script>
+    <script type="text/javascript" src="colorpicker/js/eye.js"></script>
+    <script type="text/javascript" src="colorpicker/js/utils.js"></script>
+    <script type="text/javascript" src="colorpicker/js/layout.js?ver=1.0.2"></script>
+
+
+    <style type="text/css">
+    .style-panel{
+      width: 40%;
+    }
+    .dragable-code{
+      color: #000 ;
+      font-style: normal;
+      font-weight: 500;
+      font-family: Arial;
+      font-size: 14px;
+    }
+    .main-div{
+      text-align: left;
+      
+      }
+      .btn-bold, .btn-italic{
+        border-radius: 0px;
+        border: 1px solid #BABABA;       
+        margin: -3px;
+        height: 28px;
+      }
+      .btn-bold{
+        border-radius: 3px 0px 0px 3px;
+      }
+      .btn-italic{
+        border-radius: 0px 3px 3px 0px; 
+      }
+      select {
+        margin-left: 5px;
+      }
+    
+    
+
+    </style>
+
+</head>
+
+<body><br><br>
+  <div class="container">
+
+    <div class="panel panel-default style-panel">
+       <div class="panel-heading">
+        <div class="main-div">
+         
+            <button id="btn-bold" name="btn-bold" role="button" class="btn-bold">
+              <i class="fa fa-bold"></i>          
+            </button>
+            <button id="btn-italic" name="btn-italic" role="button" class="btn-italic">
+              <i class="fa fa-italic"></i>          
+            </button>
+
+            <select class="select-font-family" id="select-font-family">
+              <option selected="selected">Arial</option>                        
+              <option>Georgia</option>
+              <option>Times New Roman</option>              
+              <option>Verdana</option>
+            </select>
+
+
+             <select class="select-font-size" id="select-font-size">
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>12</option>
+              <option selected="selected" >14</option>
+              <option>16</option>
+              <option>18</option>
+              <option>20</option>
+            </select>
+
+            <div id="colorSelector" style="display: inline;">
+                    <div style="background-color: #000000" ></div>
+            </div>
+           
+        </div>
+       </div>       
+    </div>
+  </div>
+
+   <div class="wrapper"> 
+      
+    </div>
+
+  <span id="dragable-code" class="dragable-code">0000 0000 0000 0000</span>
+
+
+   <script type="text/javascript">
+                //console.log($('#select-font-family').val());
+
+                $('#btn-italic').click(function() {                 
+                  if($(this).hasClass('btn-primary')){
+                    $('#dragable-code').css('font-style', 'normal');
+                    $(this).removeClass('btn-primary');
+                  }
+                  else{
+                   $('#dragable-code').css('font-style', 'italic');
+                     $(this).addClass('btn-primary');
+                  }
+                  
+                  
+                });
+
+
+                $('#btn-bold').click(function() {                 
+                  if($(this).hasClass('btn-primary')){
+                    $('#dragable-code').css('font-weight', 500);
+                    $(this).removeClass('btn-primary');
+                  }
+                  else{
+                    $('#dragable-code').css('font-weight', 'bold');
+                     $(this).addClass('btn-primary');
+                  }
+                  
+                });
+
+                $('#select-font-family').change(function() {
+                  console.log($(this).val());
+                  $('#dragable-code').css('font-family', $(this).val());
+                });
+
+                 $('#select-font-size').change(function() {
+                  console.log($(this).val());
+                  $('#dragable-code').css('font-size', $(this).val() + 'px');
+                });
+
+
+                $('#colorSelector').ColorPicker({
+                    color: '#0000ff',
+                    onShow: function (colpkr) {
+                        $(colpkr).fadeIn(100);
+                        return false;
+                    },
+                    onHide: function (colpkr) {
+                        $(colpkr).fadeOut(100);
+                        return false;
+                    },
+                    onChange: function (hsb, hex, rgb) {
+                        $('#colorSelector div').css('backgroundColor', '#' + hex);
+                        $('#dragable-code').css('color', '#' + hex);
+                        console.log(hex);
+                    }
+
+
+                });
+            </script>
+</body>
+
+</html>

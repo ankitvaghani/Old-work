@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC>
+<html >
+<head>
+    <title>ColorPicker - jQuery plugin</title>
+	<link rel="stylesheet" href="css/colorpicker.css" type="text/css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="css/layout.css" />
+    
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/colorpicker.js"></script>
+    <script type="text/javascript" src="js/eye.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/layout.js?ver=1.0.2"></script>
+</head>
+<body>
+    <div class="wrapper"> 
+     
+				
+				<p>
+					<div id="colorSelector">
+                        <div style="background-color: #0000ff"></div>
+                    </div>
+				</p>
+                <label id="colorcng">Testing...</label>
+            </div>
+
+            <script type="text/javascript">
+                $('#colorSelector').ColorPicker({
+                    color: '#0000ff',
+                    onShow: function (colpkr) {
+                        $(colpkr).fadeIn(500);
+                        return false;
+                    },
+                    onHide: function (colpkr) {
+                        $(colpkr).fadeOut(500);
+                        return false;
+                    },
+                    onChange: function (hsb, hex, rgb) {
+                        $('#colorSelector div').css('backgroundColor', '#' + hex);
+                        $('#colorcng').css('color', '#' + hex);
+                        console.log(hex);
+                    }
+
+
+                });
+            </script>
+           
+</body>
+</html>

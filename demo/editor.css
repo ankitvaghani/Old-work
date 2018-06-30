@@ -1,0 +1,333 @@
+
+/*! * froala_editor v2.8.1 (https://www.froala.com/wysiwyg-editor) * License https://froala.com/wysiwyg-editor/terms/ * Copyright 2014-2018 Froala Labs */
+.fr-toolbar .fr-command.fr-btn,.fr-popup .fr-command.fr-btn{
+    background:transparent;
+    color:#222222;
+    -moz-outline:0;
+    outline:0;
+    border:0;
+    line-height:1;
+    cursor:pointer;
+    text-align:left;
+    margin:0px 2px;
+    -webkit-transition:background 0.2s ease 0s;
+    -moz-transition:background 0.2s ease 0s;
+    -ms-transition:background 0.2s ease 0s;
+    -o-transition:background 0.2s ease 0s;
+    border-radius:0;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+    z-index:2;
+    position:relative;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    text-decoration:none;
+    user-select:none;
+    -o-user-select:none;
+    -moz-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    float:left;
+    padding:0;
+    width:38px;
+    height:38px
+}
+.fr-toolbar .fr-command.fr-btn::-moz-focus-inner{
+    border:0;
+    padding:0
+}
+.fr-toolbar .fr-command.fr-btn.fr-btn-text{
+    width:auto
+}
+.fr-toolbar .fr-command.fr-btn i{
+    display:block;
+    font-size:14px;
+    width:14px;
+    margin:12px 12px;
+    text-align:center;
+    float:none
+}
+.fr-toolbar .fr-command.fr-btn span.fr-sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0, 0, 0, 0);
+    border:0
+}
+.fr-toolbar .fr-command.fr-btn span{
+    font-size:14px;
+    display:block;
+    line-height:17px;
+    min-width:34px;
+    float:left;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    height:17px;
+    font-weight:bold;
+    padding:0 2px
+}
+.fr-toolbar .fr-command.fr-btn.fr-active{
+    color:#1e88e5;
+    background:transparent
+}
+.fr-toolbar.fr-rtl .fr-command.fr-btn{
+    float:right
+}
+.fr-toolbar.fr-inline .fr-command.fr-btn:not(.fr-hidden){
+    display:-webkit-inline-flex;
+    display:-ms-inline-flexbox;
+    display:inline-flex;
+    float:none
+}
+.fr-desktop .fr-command:hover,.fr-desktop .fr-command:focus{
+    outline:0;
+    color:#222222;
+    background:#ebebeb
+}
+.fr-desktop .fr-command:hover::after,.fr-desktop .fr-command:focus::after{
+    border-top-color:#222222 !important
+}
+.fr-desktop .fr-command.fr-active:hover,.fr-desktop .fr-command.fr-active:focus{
+    color:#1e88e5;
+    background:#ebebeb
+}
+.fr-desktop .fr-command.fr-disabled:hover,.fr-desktop .fr-command.fr-disabled:focus,.fr-desktop .fr-command.fr-disabled.fr-selected{
+    background:transparent
+}
+.fr-desktop.fr-disabled .fr-command:hover,.fr-desktop.fr-disabled .fr-command:focus,.fr-desktop.fr-disabled .fr-command.fr-selected{
+    background:transparent
+}
+.fr-toolbar.fr-mobile .fr-command.fr-blink,.fr-popup.fr-mobile .fr-command.fr-blink{
+    background:transparent
+}
+.fr-command.fr-btn{
+    display:inline-block;
+    position:absolute;
+    right:auto;
+    bottom:auto;
+    height:auto;
+    z-index:4;
+    -webkit-overflow-scrolling:touch;
+    overflow:hidden;
+    zoom:1;
+    border-radius:0 0 2px 2px;
+    -moz-border-radius:0 0 2px 2px;
+    -webkit-border-radius:0 0 2px 2px;
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box
+}
+.fr-command.fr-btn{
+    -webkit-transition:none;
+    -moz-transition:none;
+    -ms-transition:none;
+    -o-transition:none;
+    height:auto;
+    max-height:275px
+}
+.fr-command.fr-btn+.fr-dropdown-menu .fr-dropdown-wrapper{
+    background:#ffffff;
+    padding:0;
+    margin:auto;
+    display:inline-block;
+    text-align:left;
+    position:relative;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-transition:max-height 0.2s ease 0s;
+    -moz-transition:max-height 0.2s ease 0s;
+    -ms-transition:max-height 0.2s ease 0s;
+    -o-transition:max-height 0.2s ease 0s;
+    margin-top:0;
+    float:left;
+    max-height:0;
+    height:0;
+    margin-top:0 !important
+}
+.fr-toolbar.fr-rtl .fr-dropdown-wrapper,.fr-popup.fr-rtl .fr-dropdown-wrapper{
+    text-align:right !important
+}
+.fr-toolbar{
+    color:#222222;
+    background:#ffffff;
+    position:relative;
+    z-index:4;
+    font-family:Arial, Helvetica, sans-serif;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    user-select:none;
+    -o-user-select:none;
+    -moz-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    padding:0 2px;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    text-align:left;
+    border:0px;
+    border-top:5px solid #222222;
+    text-rendering:optimizelegibility;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.2
+}
+.fr-toolbar::after{
+    clear:both;
+    display:block;
+    content:"";
+    height:0
+}
+.fr-toolbar.fr-rtl{
+    text-align:right
+}
+.fr-toolbar.fr-inline{
+    display:none;
+    white-space:nowrap;
+    position:absolute;
+    margin-top:10px
+}
+.fr-toolbar.fr-inline .fr-arrow{
+    width:0;
+    height:0;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-bottom:5px solid #222222;
+    position:absolute;
+    top:-9px;
+    left:50%;
+    margin-left:-5px;
+    display:inline-block
+}
+.fr-toolbar.fr-inline.fr-above{
+    margin-top:-10px;
+    -webkit-box-shadow:0 -1px 3px rgba(0,0,0,0.12),0 -1px 1px 1px rgba(0,0,0,0.16);
+    -moz-box-shadow:0 -1px 3px rgba(0,0,0,0.12),0 -1px 1px 1px rgba(0,0,0,0.16);
+    box-shadow:0 -1px 3px rgba(0,0,0,0.12),0 -1px 1px 1px rgba(0,0,0,0.16);
+    border-bottom:5px solid #222222;
+    border-top:0
+}
+.fr-toolbar.fr-inline.fr-above .fr-arrow{
+    top:auto;
+    bottom:-9px;
+    border-bottom:0;
+    border-top-color:inherit;
+    border-top-style:solid;
+    border-top-width:5px
+}
+.fr-toolbar.fr-top{
+    top:0;
+    border-radius:2px 2px 0 0;
+    -moz-border-radius:2px 2px 0 0;
+    -webkit-border-radius:2px 2px 0 0;
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16)
+}
+.fr-toolbar.fr-bottom{
+    bottom:0;
+    border-radius:0 0 2px 2px;
+    -moz-border-radius:0 0 2px 2px;
+    -webkit-border-radius:0 0 2px 2px;
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16);
+    box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 1px 1px rgba(0,0,0,0.16)
+}
+.fr-separator{
+    background:#ebebeb;
+    display:block;
+    vertical-align:top;
+    float:left
+}
+.fr-separator+.fr-separator{
+    display:none
+}
+.fr-separator.fr-vs{
+    height:34px;
+    width:1px;
+    margin:2px
+}
+.fr-separator.fr-hs{
+    clear:both;
+    height:1px;
+    width:calc(100% - (2 * 2px));
+    margin:0 2px
+}
+.fr-separator.fr-hidden{
+    display:none !important
+}
+.fr-rtl .fr-separator{
+    float:right
+}
+.fr-toolbar.fr-inline .fr-separator.fr-hs{
+    float:none
+}
+.fr-toolbar.fr-inline .fr-separator.fr-vs{
+    float:none;
+    display:inline-block
+}
+.fr-sticky{
+    position:-webkit-sticky;
+    position:-moz-sticky;
+    position:-ms-sticky;
+    position:-o-sticky;
+    position:sticky
+}
+.fr-sticky-off{
+    position:relative
+}
+.fr-sticky-on{
+    position:fixed
+}
+.fr-sticky-on.fr-sticky-ios{
+    position:absolute;
+    left:0;
+    right:0;
+    width:auto !important
+}
+.fr-sticky-dummy{
+    display:none
+}
+.fr-sticky-on+.fr-sticky-dummy,.fr-sticky-box>.fr-sticky-dummy{
+    display:block
+}
+span.fr-sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0, 0, 0, 0);
+    border:0
+}
+/*! * froala_editor v2.8.1 (https://www.froala.com/wysiwyg-editor) * License https://froala.com/wysiwyg-editor/terms/ * Copyright 2014-2018 Froala Labs */
+.clearfix::after{
+    clear:both;
+    display:block;
+    content:"";
+    }
